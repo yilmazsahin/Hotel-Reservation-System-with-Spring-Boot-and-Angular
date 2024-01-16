@@ -38,7 +38,7 @@ public class CustomerController {
     }
 
     @DeleteMapping("/{id}")
-    public void deleteCustomerById(Long id) {
+    public void deleteCustomerById(@PathVariable Long id) {
         customerService.deleteCustomerById(id);
     }
 
@@ -47,9 +47,10 @@ public class CustomerController {
         Customer result = customerService.updateCustomer(id, updatedCustomer);
         return new ResponseEntity<>(result, HttpStatus.OK);
     }
+
     @PatchMapping("/{id}")
-    public ResponseEntity<Customer> partialUpdateCustomer(@PathVariable Long id,@RequestBody Map<String, Object>updates){
-        Customer result =customerService.partialUpdateCustomer(id,updates);
-        return new ResponseEntity<>(result,HttpStatus.OK);
+    public ResponseEntity<Customer> partialUpdateCustomer(@PathVariable Long id, @RequestBody Map<String, Object> updates) {
+        Customer result = customerService.partialUpdateCustomer(id, updates);
+        return new ResponseEntity<>(result, HttpStatus.OK);
     }
 }
